@@ -1,29 +1,24 @@
-
-
-
 import numpy as np
-import imutils
-import time
 import cv2
+
+# system libraries
 import os
-import math
-
-#system libraries
+# system libraries
 import os
-import sys
-from threading import Timer
-import shutil
-import time
+
+import cv2
+import numpy as np
 
 
-def create_dataset_folders(dataset_path,labels):
+def create_dataset_folders(dataset_path, labels):
     for label in labels:
-        dataset_folder = dataset_path+"\\"+label
+        dataset_folder = dataset_path + "\\" + label
         if not os.path.exists(dataset_folder):
             os.makedirs(dataset_folder)
-            
-def detect_face(frame, faceNet,threshold=0.5):
-	# grab the dimensions of the frame and then construct a blob
+
+
+def detect_face(frame, faceNet, threshold=0.5):
+    # grab the dimensions of the frame and then construct a blob
 	# from it
 	global detections 
 	(h, w) = frame.shape[:2]
@@ -38,6 +33,7 @@ def detect_face(frame, faceNet,threshold=0.5):
 	locs = []
 	# loop over the detections
 	for i in range(0, detections.shape[2]):
+
 		# extract the confidence (i.e., probability) associated with
 		confidence = detections[0, 0, i, 2]
 
